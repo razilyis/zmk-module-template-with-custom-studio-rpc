@@ -7,7 +7,7 @@ message SampleRequest {
 }
 
 message SampleResponse {
-    string value = 2;
+    string value = 1;
 }
 
 message Request {
