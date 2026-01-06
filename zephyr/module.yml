@@ -4,8 +4,8 @@
 name: zmk-module-template
 build:
   # List your dependencies
-  depends:
-    - zmk-example-dependency
+  # depends:
+  #   - zmk-example-dependency
   # Folder containing a "CMakeLists.txt" (. = root)
   cmake: .
   # Kconfig filepath
@@ -16,4 +16,4 @@ build:
     # Folder containing a "dts" folder (. = root)
     dts_root: .
     # Folder containing a "snippets" folder (. = root)
-    snippet_root:  .
+    snippet_root: .
