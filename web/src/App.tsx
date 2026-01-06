@@ -14,7 +14,7 @@ import {
 import { Request, Response } from "./proto/zmk/template/custom";
 
 // Custom subsystem identifier - must match firmware registration
-const SUBSYSTEM_IDENTIFIER = "zmk__template";
+export const SUBSYSTEM_IDENTIFIER = "zmk__template";
 
 function App() {
   return (
@@ -70,7 +70,7 @@ function App() {
   );
 }
 
-function RPCTestSection() {
+export function RPCTestSection() {
   const zmkApp = useContext(ZMKAppContext);
   const [inputValue, setInputValue] = useState<number>(42);
   const [response, setResponse] = useState<string | null>(null);
