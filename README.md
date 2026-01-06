@@ -176,7 +176,12 @@ west zmk-test tests -m .
 
 **Web UI test**
 
-TODO
+The `./web` directory includes Jest tests. See [./web/README.md](./web/README.md#testing) for more details.
+
+```bash
+cd web
+npm test
+```
 
 ## Publishing Web UI
 

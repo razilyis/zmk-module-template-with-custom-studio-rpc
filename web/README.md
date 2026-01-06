@@ -25,6 +25,9 @@ npm run dev
 
 # Build for production
 npm run build
+
+# Run tests
+npm test
 ```
 
 ## Project Structure
@@ -37,6 +40,10 @@ src/
 └── proto/                # Generated protobuf TypeScript types
     └── zmk/template/
         └── custom.ts
+
+test/
+├── App.spec.tsx              # Tests for App component
+└── RPCTestSection.spec.tsx   # Tests for RPC functionality
 ```
 
 ## How It Works
@@ -88,6 +95,57 @@ const service = new ZMKCustomSubsystem(state.connection, subsystem.index);
 const response = await service.callRPC(payload);
 ```
 
+## Testing
+
+This template includes Jest tests as a reference implementation for template users.
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
+```
+
+### Test Structure
+
+The tests demonstrate how to use the `react-zmk-studio` test helpers:
+
+- **App.spec.tsx**: Basic rendering tests for the main application
+- **RPCTestSection.spec.tsx**: Tests showing how to mock ZMK connection and test
+  components that interact with devices
+
+### Writing Tests
+
+Use the test helpers from `@cormoran/zmk-studio-react-hook/testing`:
+
+```typescript
+import {
+  createConnectedMockZMKApp,
+  ZMKAppProvider,
+} from "@cormoran/zmk-studio-react-hook/testing";
+
+// Create a mock connected device with subsystems
+const mockZMKApp = createConnectedMockZMKApp({
+  deviceName: "Test Device",
+  subsystems: ["zmk__template"],
+});
+
+// Wrap your component with the provider
+render(
+  <ZMKAppProvider value={mockZMKApp}>
+    <YourComponent />
+  </ZMKAppProvider>
+);
+```
+
+See the test files in `./test/` for complete examples.
+
 ## Customization
 
 To adapt this template for your own ZMK module:
@@ -98,6 +156,8 @@ To adapt this template for your own ZMK module:
 3. **Update subsystem identifier**: Change `SUBSYSTEM_IDENTIFIER` in `App.tsx`
    to match your firmware registration
 4. **Update RPC logic**: Modify the request/response handling in `App.tsx`
+5. **Update tests**: Modify tests to match your custom subsystem identifier and
+   functionality
 
 ## Dependencies
 
@@ -108,6 +168,13 @@ To adapt this template for your own ZMK module:
 - **ts-proto**: Protocol buffers code generator for TypeScript
 - **React 19**: Modern React with hooks
 - **Vite**: Fast build tool and dev server
+
+### Development Dependencies
+
+- **Jest**: Testing framework
+- **@testing-library/react**: React testing utilities
+- **ts-jest**: TypeScript support for Jest
+- **identity-obj-proxy**: CSS mock for testing
 
 ## Development Notes
 
