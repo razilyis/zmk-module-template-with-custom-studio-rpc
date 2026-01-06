@@ -13,7 +13,7 @@ This template contains sample implementation. Please edit and rename below files
 to implement your protocol.
 
 - proto `proto/zmk/template/custom.proto` and `custom.options`
-- handler `src/studio/custom_hanlder.c`
+- handler `src/studio/custom_handler.c`
 - flags in `Kconfig`
 - test `./tests/studio`
 

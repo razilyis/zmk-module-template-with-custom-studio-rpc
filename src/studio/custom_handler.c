@@ -57,7 +57,7 @@ template_rpc_handle_request(const zmk_custom_CallRequest *raw_request,
   if (!pb_decode(&req_stream, zmk_template_Request_fields, &req)) {
     LOG_WRN("Failed to decode template request: %s", PB_GET_ERROR(&req_stream));
     zmk_template_ErrorResponse err = zmk_template_ErrorResponse_init_zero;
-    strcpy(err.message, "Failed to decode request");
+    snprintf(err.message, sizeof(err.message), "Failed to decode request");
     resp->which_response_type = zmk_template_Response_error_tag;
     resp->response_type.error = err;
     return true;
@@ -75,7 +75,7 @@ template_rpc_handle_request(const zmk_custom_CallRequest *raw_request,
 
   if (rc != 0) {
     zmk_template_ErrorResponse err = zmk_template_ErrorResponse_init_zero;
-    strcpy(err.message, "Failed to process request");
+    snprintf(err.message, sizeof(err.message), "Failed to process request");
     resp->which_response_type = zmk_template_Response_error_tag;
     resp->response_type.error = err;
   }
