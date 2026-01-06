@@ -11,7 +11,7 @@ import {
   createConnectedMockZMKApp,
   ZMKAppProvider,
 } from "@cormoran/zmk-studio-react-hook/testing";
-import { RPCTestSection } from "../src/App";
+import { RPCTestSection, SUBSYSTEM_IDENTIFIER } from "../src/App";
 
 describe("RPCTestSection Component", () => {
   describe("With Subsystem", () => {
@@ -19,7 +19,7 @@ describe("RPCTestSection Component", () => {
       // Create a connected mock ZMK app with the required subsystem
       const mockZMKApp = createConnectedMockZMKApp({
         deviceName: "Test Device",
-        subsystems: ["zmk__template"], // The subsystem identifier used in App.tsx
+        subsystems: [SUBSYSTEM_IDENTIFIER],
       });
 
       render(
@@ -37,7 +37,7 @@ describe("RPCTestSection Component", () => {
 
     it("should show default input value", () => {
       const mockZMKApp = createConnectedMockZMKApp({
-        subsystems: ["zmk__template"],
+        subsystems: [SUBSYSTEM_IDENTIFIER],
       });
 
       render(
