@@ -1,3 +1,4 @@
+build/
 dependencies/
 .west
 __pycache__
